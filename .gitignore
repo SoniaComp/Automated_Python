@@ -1,2 +1,4 @@
 env/
 secrets.json
+DS_STORE
+__pycache__/

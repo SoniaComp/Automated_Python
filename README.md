@@ -10,10 +10,20 @@ $ source evn/bin/activate
 
 ## 이메일
 MIME(Multipurpose internet Mail Extensions): 서식 있는 텍스트 및 첨부파일
+* MIMEMultipart 메시지는 단일 이메일의 HTML과 텍스트 컨텐츠 모두를 의미한다.
+* 새로운 멀티파트 MIME 메시지를 생성한 다음 텍스트 콘텐츠를 추가한다.
+* MIMEBase: 텍스트 파일을 첨부하는데 사용될 email 모듈
+payload로 파일의 컨텐츠를 이 객체(MIMEBase)에 할당한다. 파일의 컨텐츠는 attachment.read()로 얻고, 페이로드는 set_payload() 메소드로 설정한다. 파일을 첨부하려면, MIMEBase 객체는 base64로 인코딩되고, Content-Disposition헤더는 part 객체에 추가돼야 한다. 이제 part 객체가 있으므로, 본문과 마찬가지로 attach()메소드를 사용해 멀티파트 객체 msg에 추가될 수 있다.
 
 FTP(File Transfer Protocol): 컴퓨터 간의 메시지 전송
 
 SMTP(Simple Mail Transfer Protocol): 이메일 작업에서 가장 널리 사용되는 프로토콜
+
+* imaplib 라이브러리: IMAP(Internet Message Access Protocol)을 사용해 메일 박스에 연결할 수 있게 도와준다.
+* M 객체에서 list()메소드를 호출하면 이미 생성한 모든 라벨이 반환된다.
+* ACM 라벨을 생성했고, 따라서 ACM 라벨은 내 라벨 목록에 나타난다.
+
+저장 전달 철학으로 작동. 이메일 메시지는 서버에 비동기적으로 저장되므로, 수신자는 나중에 편리하게 솩인할 수 있다.
 
 ## SMS
 평문 및 CSV(comma-separated value) 파일을 사용한 작업을 살펴본 다음 범위를 확장해 엑셀 워크 시트, 워드문서 및 PDF 파일 작업에 대해 살펴봄
